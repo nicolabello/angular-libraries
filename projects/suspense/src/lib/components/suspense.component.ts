@@ -4,7 +4,7 @@ import {SuspenseData, SuspenseError, SuspenseInput, SuspenseLoading} from '../mo
 import {SuspenseService} from '../services/suspense.service';
 
 @Component({
-  selector: 'lib-suspense',
+  selector: 'nbl-suspense',
   template: `
     <ng-content></ng-content>
   `,
@@ -13,7 +13,10 @@ import {SuspenseService} from '../services/suspense.service';
 })
 export class SuspenseComponent implements OnInit, OnDestroy {
 
-  private changesSubscription: Subscription | null = null;
+  private changesSubscription: Subscription | undefined;
+
+  constructor(private cdr: ChangeDetectorRef, private suspenseService: SuspenseService) {
+  }
 
   @Input()
   public set data(value: SuspenseInput<SuspenseData>) {
@@ -28,9 +31,6 @@ export class SuspenseComponent implements OnInit, OnDestroy {
   @Input()
   public set error(value: SuspenseInput<SuspenseError>) {
     this.suspenseService.error.init(value);
-  }
-
-  constructor(private cdr: ChangeDetectorRef, private suspenseService: SuspenseService) {
   }
 
   public ngOnInit(): void {

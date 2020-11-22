@@ -1,11 +1,12 @@
-import { Directive, OnDestroy, OnInit } from '@angular/core';
+import {Directive, OnDestroy, OnInit} from '@angular/core';
 import {SuspenseLoading} from '../models/suspense-types';
 import {SuspenseIfDirective} from './suspense-if.directive';
 
 @Directive({
-  selector: '[libSuspenseIfLoading]'
+  selector: '[nblSuspenseIfLoading]',
 })
 export class SuspenseIfLoadingDirective extends SuspenseIfDirective<SuspenseLoading> implements OnInit, OnDestroy {
+
   public get isVisible(): boolean {
     return this.suspenseService.loading.booleanValue;
   }
@@ -13,4 +14,5 @@ export class SuspenseIfLoadingDirective extends SuspenseIfDirective<SuspenseLoad
   public get value(): SuspenseLoading {
     return this.suspenseService.loading.value;
   }
+
 }

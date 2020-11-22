@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import {Component, ViewChild} from '@angular/core';
+import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {SuspenseComponent} from '../components/suspense.component';
 import {SuspenseIfLoadingDirective} from './suspense-if-loading.directive';
 
@@ -8,78 +8,79 @@ const testCases = [
     data: null,
     loading: false,
     error: null,
-    visible: false
+    visible: false,
   },
   {
     data: null,
     loading: false,
     error: 'ops',
-    visible: false
+    visible: false,
   },
   {
     data: null,
     loading: true,
     error: null,
-    visible: true
+    visible: true,
   },
   {
     data: null,
     loading: true,
     error: 'ops',
-    visible: true
+    visible: true,
   },
   {
     data: 'data',
     loading: false,
     error: null,
-    visible: false
+    visible: false,
   },
   {
     data: 'data',
     loading: false,
     error: 'ops',
-    visible: false
+    visible: false,
   },
   {
     data: 'data',
     loading: true,
     error: null,
-    visible: true
+    visible: true,
   },
   {
     data: 'data',
     loading: true,
     error: 'ops',
-    visible: true
-  }
+    visible: true,
+  },
 ];
 
 @Component({
   template: `
-    <lib-suspense [data]="data" [loading]="loading" [error]="error">
-      <ng-container *libSuspenseIfLoading="let loading">Loading: {{ loading }}</ng-container>
-    </lib-suspense>
-  `
+    <nbl-suspense [data]="data" [loading]="loading" [error]="error">
+      <ng-container *nblSuspenseIfLoading="let loading">Loading: {{ loading }}</ng-container>
+    </nbl-suspense>
+  `,
 })
 export class DummyComponent {
   public data: any;
   public loading: any;
   public error: any;
 
-  @ViewChild(SuspenseIfLoadingDirective) public suspenseIfDirective: SuspenseIfLoadingDirective | null = null;
+  @ViewChild(SuspenseIfLoadingDirective) public suspenseIfDirective: SuspenseIfLoadingDirective | undefined;
 }
 
 describe('SuspenseIfLoadingDirective', () => {
+
   let component: DummyComponent;
   let fixture: ComponentFixture<DummyComponent>;
-  let directive: SuspenseIfLoadingDirective | null;
+  let directive: SuspenseIfLoadingDirective | undefined;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
         declarations: [DummyComponent, SuspenseComponent, SuspenseIfLoadingDirective],
       }).compileComponents();
-    })
+    }),
   );
 
   beforeEach(() => {
@@ -108,4 +109,5 @@ describe('SuspenseIfLoadingDirective', () => {
       testCase.visible ? expect(directive?.isVisible).toBeTruthy() : expect(directive?.isVisible).toBeFalsy();
     }
   });
+
 });

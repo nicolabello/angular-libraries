@@ -7,7 +7,7 @@ describe('SuspenseService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SuspenseService]
+      providers: [SuspenseService],
     });
     service = TestBed.inject(SuspenseService);
   });

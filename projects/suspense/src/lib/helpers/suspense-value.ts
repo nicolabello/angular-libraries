@@ -1,4 +1,4 @@
-import { isObservable, Observable, Subject, Subscription } from 'rxjs';
+import {isObservable, Observable, Subject, Subscription} from 'rxjs';
 import {SuspenseInput} from '../models/suspense-types';
 
 function isPromise(promise: any): boolean {
@@ -6,9 +6,9 @@ function isPromise(promise: any): boolean {
 }
 
 export class SuspenseValue<T = any> {
-  public value: T | null = null;
+  public value: T | undefined;
   public booleanValue = false;
-  private valueSubscription: Subscription | null = null;
+  private valueSubscription: Subscription | undefined;
 
   private changeSubject = new Subject<void>();
 
@@ -40,6 +40,10 @@ export class SuspenseValue<T = any> {
     this.changeSubject.next();
   }
 
+  public unsubscribe(): void {
+    this.valueSubscription?.unsubscribe();
+  }
+
   private toBoolean(value: T): boolean {
     if (Array.isArray(value)) {
       return !!value.length;
@@ -50,9 +54,5 @@ export class SuspenseValue<T = any> {
     }
 
     return (value as unknown as number) === 0 || !!value;
-  }
-
-  public unsubscribe(): void {
-    this.valueSubscription?.unsubscribe();
   }
 }

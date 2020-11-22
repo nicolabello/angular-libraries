@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/suspense",
       "sourceRoot": "projects/suspense/src",
-      "prefix": "lib",
+      "prefix": "nbl",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",

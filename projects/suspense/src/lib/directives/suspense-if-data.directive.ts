@@ -3,7 +3,7 @@ import {SuspenseData} from '../models/suspense-types';
 import {SuspenseIfDirective} from './suspense-if.directive';
 
 @Directive({
-  selector: '[libSuspenseIfData]',
+  selector: '[nblSuspenseIfData]',
 })
 export class SuspenseIfDataDirective extends SuspenseIfDirective<SuspenseData> implements OnInit, OnDestroy {
 
