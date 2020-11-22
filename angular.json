@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "suspense": {
+      "projectType": "library",
+      "root": "projects/suspense",
+      "sourceRoot": "projects/suspense/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/suspense/tsconfig.lib.json",
+            "project": "projects/suspense/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/suspense/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/suspense/src/test.ts",
+            "tsConfig": "projects/suspense/tsconfig.spec.json",
+            "karmaConfig": "projects/suspense/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/suspense/tsconfig.lib.json",
+              "projects/suspense/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "suspense"
 }
