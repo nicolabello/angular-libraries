@@ -61,7 +61,7 @@ const testCases = [
     </nbl-suspense>
   `,
 })
-export class DummyComponent {
+export class TestComponent {
   public data: any;
   public loading: any;
   public error: any;
@@ -71,20 +71,20 @@ export class DummyComponent {
 
 describe('SuspenseIfEmptyDirective', () => {
 
-  let component: DummyComponent;
-  let fixture: ComponentFixture<DummyComponent>;
+  let component: TestComponent;
+  let fixture: ComponentFixture<TestComponent>;
   let directive: SuspenseIfEmptyDirective | undefined;
 
   beforeEach(
     waitForAsync(() => {
       TestBed.configureTestingModule({
-        declarations: [DummyComponent, SuspenseComponent, SuspenseIfEmptyDirective],
+        declarations: [TestComponent, SuspenseComponent, SuspenseIfEmptyDirective],
       }).compileComponents();
     }),
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DummyComponent);
+    fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
     fixture.whenStable();

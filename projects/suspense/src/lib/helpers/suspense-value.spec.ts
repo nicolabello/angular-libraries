@@ -1,3 +1,4 @@
+import {waitForAsync} from '@angular/core/testing';
 import {from} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {SuspenseValue} from './suspense-value';
@@ -22,20 +23,20 @@ describe('SuspenseValue', () => {
     suspenseValue.init(source);
   });
 
-  it('should allow promises', async () => {
+  it('should allow promises', waitForAsync(async () => {
     const source = new Promise(resolve => {
       resolve('test');
     });
     await suspenseValue.init(source);
     expect(suspenseValue.value).toBe('test');
     expect(suspenseValue.booleanValue).toBe(true);
-  });
+  }));
 
-  it('should allow simple values', async () => {
+  it('should allow simple values', waitForAsync(async () => {
     await suspenseValue.init('test');
     expect(suspenseValue.value).toBe('test');
     expect(suspenseValue.booleanValue).toBe(true);
-  });
+  }));
 
   it('should convert strings to boolean', () => {
     const value = 'test';
