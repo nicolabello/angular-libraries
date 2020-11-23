@@ -23,6 +23,10 @@
       "suspense": [
         "dist/suspense/suspense",
         "dist/suspense"
+      ],
+      "misc": [
+        "dist/misc/misc",
+        "dist/misc"
       ]
     }
   },

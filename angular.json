@@ -42,6 +42,46 @@
           }
         }
       }
+    },
+    "misc": {
+      "projectType": "library",
+      "root": "projects/misc",
+      "sourceRoot": "projects/misc/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/misc/tsconfig.lib.json",
+            "project": "projects/misc/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/misc/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/misc/src/test.ts",
+            "tsConfig": "projects/misc/tsconfig.spec.json",
+            "karmaConfig": "projects/misc/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/misc/tsconfig.lib.json",
+              "projects/misc/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "suspense"
