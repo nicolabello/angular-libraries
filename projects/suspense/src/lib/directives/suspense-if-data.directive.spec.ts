@@ -61,7 +61,7 @@ const testCases = [
     </nbl-suspense>
   `,
 })
-export class TestComponent {
+class TestComponent {
   public data: any;
   public loading: any;
   public error: any;
