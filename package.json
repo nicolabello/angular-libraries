@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
+    "build": "ng build --prod --project misc && ng build --prod --project flex && ng build --prod --project suspense",
+    "test": "ng test --watch false --project flex && ng test --watch false --project misc && ng test --watch false --project suspense",
     "lint": "ng lint"
   },
   "private": true,
@@ -28,6 +28,7 @@
     "@angular/compiler-cli": "~11.0.1",
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
+    "@types/resize-observer-browser": "^0.1.4",
     "codelyzer": "^6.0.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",

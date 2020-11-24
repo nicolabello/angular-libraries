@@ -13,7 +13,7 @@ import {SuspenseService} from '../services/suspense.service';
 })
 export class SuspenseComponent implements OnInit, OnDestroy {
 
-  private changesSubscription: Subscription | undefined;
+  private changesSubscription?: Subscription;
 
   constructor(private cdr: ChangeDetectorRef, private suspenseService: SuspenseService) {
   }

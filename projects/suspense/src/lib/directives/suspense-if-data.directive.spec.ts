@@ -66,7 +66,7 @@ class TestComponent {
   public loading: any;
   public error: any;
 
-  @ViewChild(SuspenseIfDataDirective) public suspenseIfDirective: SuspenseIfDataDirective | undefined;
+  @ViewChild(SuspenseIfDataDirective) public suspenseIfDirective?: SuspenseIfDataDirective;
 }
 
 describe('SuspenseIfDataDirective', () => {

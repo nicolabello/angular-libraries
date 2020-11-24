@@ -6,9 +6,9 @@ function isPromise(promise: any): boolean {
 }
 
 export class SuspenseValue<T = any> {
-  public value: T | undefined;
+  public value?: T;
   public booleanValue = false;
-  private valueSubscription: Subscription | undefined;
+  private valueSubscription?: Subscription;
 
   private changeSubject = new Subject<void>();
 
@@ -53,6 +53,6 @@ export class SuspenseValue<T = any> {
       return !!Object.keys(value).length;
     }
 
-    return (value as unknown as number) === 0 || !!value;
+    return (value as any) === 0 || !!value;
   }
 }

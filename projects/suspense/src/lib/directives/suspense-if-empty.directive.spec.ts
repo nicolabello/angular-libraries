@@ -66,7 +66,7 @@ class TestComponent {
   public loading: any;
   public error: any;
 
-  @ViewChild(SuspenseIfEmptyDirective) public suspenseIfDirective: SuspenseIfEmptyDirective | undefined;
+  @ViewChild(SuspenseIfEmptyDirective) public suspenseIfDirective?: SuspenseIfEmptyDirective;
 }
 
 describe('SuspenseIfEmptyDirective', () => {

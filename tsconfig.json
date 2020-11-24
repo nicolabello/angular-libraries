@@ -27,6 +27,10 @@
       "misc": [
         "dist/misc/misc",
         "dist/misc"
+      ],
+      "flex": [
+        "dist/flex/flex",
+        "dist/flex"
       ]
     }
   },

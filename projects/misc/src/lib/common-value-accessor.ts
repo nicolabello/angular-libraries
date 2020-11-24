@@ -23,93 +23,17 @@ const emptyFunction = () => {
 // tslint:disable-next-line: directive-class-suffix
 export class CommonValueAccessor<T> implements ControlValueAccessor, Validator {
 
-  // tslint:disable-next-line: no-input-rename
-  @Input('formControl') private _formControl: FormControl | undefined;
-  @Input() private formControlName: string | undefined;
-
-  private _disabled: boolean | undefined;
-
-  public get disabled(): boolean {
-    return !!this._disabled;
-  }
-
-  private _value: T | undefined;
-
-  public set value(value: T | undefined) {
-    if (value !== this._value) {
-      this._value = value;
-      this.onChange(value);
-      this.onTouch();
-      this.onValidatorChange();
-    }
-  }
-
-  public get value(): T | undefined {
-    return this._value;
-  }
-
   protected validators: ValidatorFn[] = [];
-
-  protected onChange: (value: T | undefined) => void = emptyFunction;
+  protected onChange: (value: T) => void = emptyFunction;
   protected onTouch: () => void = emptyFunction;
   protected onValidatorChange: () => void = emptyFunction;
+  @Input() private formControlName?: string;
 
   constructor(protected cdr: ChangeDetectorRef, @Optional() private formGroupDirective: FormGroupDirective) {
   }
 
-  protected formatValueInput(value: any): T {
-    return value;
-  }
-
-  protected formatValueOutput(value: T | undefined): any {
-    return value;
-  }
-
-  // ControlValueAccessor implementation - START
-
-  // Input for value
-  public writeValue(value: any): void {
-    this._value = this.formatValueInput(value);
-    this.cdr.markForCheck();
-  }
-
-  public registerOnChange(onChange: (value: any) => void): void {
-    // Output for value
-    this.onChange = (value: T | undefined) => onChange(this.formatValueOutput(value));
-  }
-
-  public registerOnTouched(onTouched: () => void): void {
-    // Output for touched
-    this.onTouch = onTouched;
-  }
-
-  // Input for disabled
-  public setDisabledState(disabled: boolean): void {
-    this._disabled = disabled;
-  }
-
-  // ControlValueAccessor implementation - END
-
-  // Validators implementation - START
-
-  public validate(control: FormControl): ValidationErrors | null {
-
-    let errors = {};
-
-    this.validators.forEach(validator => {
-      const result = validator(control);
-      errors = result ? {...errors, ...result} : errors;
-    });
-
-    return Object.keys(errors).length ? errors : null;
-
-  }
-
-  public registerOnValidatorChange(onValidatorChange: () => void): void {
-    this.onValidatorChange = onValidatorChange;
-  }
-
-  // Validators implementation - END
+  // tslint:disable-next-line: no-input-rename
+  @Input('formControl') private _formControl?: FormControl;
 
   public get formControl(): AbstractControl | null {
 
@@ -128,12 +52,87 @@ export class CommonValueAccessor<T> implements ControlValueAccessor, Validator {
 
   }
 
+  private _disabled = false;
+
+  public get disabled(): boolean {
+    return this._disabled;
+  }
+
+  private _value?: T;
+
+  public get value(): T {
+    return this._value as T;
+  }
+
+  public set value(value: T) {
+    if (value !== this._value) {
+      this._value = value;
+      this.onChange(value);
+      this.onTouch();
+      this.onValidatorChange();
+    }
+  }
+
   public get invalid(): boolean {
     return this.formControl?.invalid || false;
   }
 
+  // ControlValueAccessor implementation - START
+
   public get errors(): ValidationErrors | null {
     return this.formControl?.errors || null;
+  }
+
+  // Input for value
+  public writeValue(value: any): void {
+    this._value = this.formatValueInput(value);
+    this.cdr.markForCheck();
+  }
+
+  public registerOnChange(onChange: (value: any) => void): void {
+    // Output for value
+    this.onChange = (value: T) => onChange(this.formatValueOutput(value));
+  }
+
+  public registerOnTouched(onTouched: () => void): void {
+    // Output for touched
+    this.onTouch = onTouched;
+  }
+
+  // ControlValueAccessor implementation - END
+
+  // Validators implementation - START
+
+  // Input for disabled
+  public setDisabledState(disabled: boolean): void {
+    this._disabled = disabled;
+  }
+
+  public validate(control: FormControl): ValidationErrors | null {
+
+    let errors = {};
+
+    this.validators.forEach(validator => {
+      const result = validator(control);
+      errors = result ? {...errors, ...result} : errors;
+    });
+
+    return Object.keys(errors).length ? errors : null;
+
+  }
+
+  // Validators implementation - END
+
+  public registerOnValidatorChange(onValidatorChange: () => void): void {
+    this.onValidatorChange = onValidatorChange;
+  }
+
+  protected formatValueInput(value: any): T {
+    return value;
+  }
+
+  protected formatValueOutput(value: T): any {
+    return value;
   }
 
 }

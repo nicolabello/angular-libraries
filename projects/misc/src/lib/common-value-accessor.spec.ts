@@ -79,9 +79,9 @@ describe('InputWrapperComponent', () => {
       formControl: new FormControl(''),
     });
 
-    @ViewChild('inputComponentByModel') public inputComponentByModel: InputComponent | undefined;
-    @ViewChild('inputComponentByFormControl') public inputComponentByFormControl: InputComponent | undefined;
-    @ViewChild('inputComponentByFormControlName') public inputComponentByFormControlName: InputComponent | undefined;
+    @ViewChild('inputComponentByModel') public inputComponentByModel?: InputComponent;
+    @ViewChild('inputComponentByFormControl') public inputComponentByFormControl?: InputComponent;
+    @ViewChild('inputComponentByFormControlName') public inputComponentByFormControlName?: InputComponent;
 
   }
 
@@ -153,9 +153,9 @@ describe('InputComponent value', () => {
       formControl: new FormControl(''),
     });
 
-    @ViewChild('inputComponentByModel') public inputComponentByModel: InputComponent | undefined;
-    @ViewChild('inputComponentByFormControl') public inputComponentByFormControl: InputComponent | undefined;
-    @ViewChild('inputComponentByFormControlName') public inputComponentByFormControlName: InputComponent | undefined;
+    @ViewChild('inputComponentByModel') public inputComponentByModel?: InputComponent;
+    @ViewChild('inputComponentByFormControl') public inputComponentByFormControl?: InputComponent;
+    @ViewChild('inputComponentByFormControlName') public inputComponentByFormControlName?: InputComponent;
 
   }
 
@@ -246,7 +246,7 @@ describe('InputComponent formatters', () => {
       return `${value}${formatValueInputSuffix}`;
     }
 
-    protected formatValueOutput(value: string | undefined): any {
+    protected formatValueOutput(value: string): any {
       return `${value}${formatValueOutputSuffix}`;
     }
   }
@@ -270,9 +270,9 @@ describe('InputComponent formatters', () => {
       formControl: new FormControl(''),
     });
 
-    @ViewChild('inputComponentByModel') public inputComponentByModel: InputComponent | undefined;
-    @ViewChild('inputComponentByFormControl') public inputComponentByFormControl: InputComponent | undefined;
-    @ViewChild('inputComponentByFormControlName') public inputComponentByFormControlName: InputComponent | undefined;
+    @ViewChild('inputComponentByModel') public inputComponentByModel?: InputComponent;
+    @ViewChild('inputComponentByFormControl') public inputComponentByFormControl?: InputComponent;
+    @ViewChild('inputComponentByFormControlName') public inputComponentByFormControlName?: InputComponent;
 
   }
 
@@ -387,9 +387,9 @@ describe('InputComponent validators', () => {
       formControl: new FormControl('', formControlValidators),
     });
 
-    @ViewChild('inputComponentByModel') public inputComponentByModel: InputComponent | undefined;
-    @ViewChild('inputComponentByFormControl') public inputComponentByFormControl: InputComponent | undefined;
-    @ViewChild('inputComponentByFormControlName') public inputComponentByFormControlName: InputComponent | undefined;
+    @ViewChild('inputComponentByModel') public inputComponentByModel?: InputComponent;
+    @ViewChild('inputComponentByFormControl') public inputComponentByFormControl?: InputComponent;
+    @ViewChild('inputComponentByFormControlName') public inputComponentByFormControlName?: InputComponent;
 
   }
 
