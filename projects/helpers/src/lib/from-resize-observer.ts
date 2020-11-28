@@ -1,6 +1,14 @@
-import '@types/resize-observer-browser';
 import {EMPTY, fromEvent, Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+
+interface ResizeObserverOptions {
+  box?: 'content-box' | 'border-box';
+}
+
+interface ResizeObserverEntry {
+  readonly target: Element;
+  readonly contentRect: DOMRectReadOnly;
+}
 
 export function fromResizeObserver(target: Element, options?: ResizeObserverOptions): Observable<ResizeObserverEntry> {
 
