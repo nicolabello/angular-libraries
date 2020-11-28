@@ -1,5 +1,5 @@
 {
-  "name": "@nicolabello/suspense",
+  "name": "@nicolabello/ng-suspense",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^11.0.1",

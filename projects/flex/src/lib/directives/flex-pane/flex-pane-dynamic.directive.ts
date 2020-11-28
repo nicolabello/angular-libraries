@@ -16,11 +16,11 @@ export class FlexPaneDynamicDirective extends FlexPane implements AfterViewInit,
     super(hostElementRef, flexContainerService, flexPaneService, ngZone);
   }
 
-  public ngAfterViewInit() {
+  public ngAfterViewInit(): void {
     this.flexContainer.setDynamicPane(this);
   }
 
-  public ngOnDestroy() {
+  public ngOnDestroy(): void {
     super.ngOnDestroy();
     this.flexContainer.unsetDynamicPane(this);
   }

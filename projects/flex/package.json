@@ -1,5 +1,5 @@
 {
-  "name": "flex",
+  "name": "@nicolabello/ng-flex",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^11.0.1",

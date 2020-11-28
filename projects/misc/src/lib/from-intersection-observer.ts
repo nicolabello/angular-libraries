@@ -19,14 +19,17 @@ export function fromIntersectionObserver(
 
   } else {
 
+    const targetRect = target.getBoundingClientRect();
+    const rootRect = new DOMRectReadOnly(0, 0, window.innerWidth, window.innerHeight);
+
     return of({
-      boundingClientRect: target.getBoundingClientRect(),
+      boundingClientRect: targetRect,
       intersectionRatio: 1,
-      intersectionRect: undefined,
+      intersectionRect: targetRect,
       isIntersecting: true,
-      rootBounds: undefined,
+      rootBounds: rootRect,
       target,
-      time: undefined,
+      time: 0,
     });
 
   }
