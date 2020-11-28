@@ -1,5 +1,5 @@
 import {AfterViewInit, Directive, ElementRef, Input, NgZone, OnDestroy} from '@angular/core';
-import {fromMutationObserver} from 'misc';
+import {fromMutationObserver} from 'helpers';
 import {debounceTime} from 'rxjs/operators';
 import {FlexContainerService} from '../../services/flex-container.service';
 import {FlexPaneService} from '../../services/flex-pane.service';

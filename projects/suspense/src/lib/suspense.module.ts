@@ -6,7 +6,8 @@ import {SuspenseIfErrorDirective} from './directives/suspense-if-error.directive
 import {SuspenseIfLoadingDirective} from './directives/suspense-if-loading.directive';
 
 @NgModule({
-  declarations: [SuspenseComponent, SuspenseIfEmptyDirective, SuspenseIfDataDirective, SuspenseIfErrorDirective, SuspenseIfLoadingDirective],
+  declarations: [
+    SuspenseComponent, SuspenseIfEmptyDirective, SuspenseIfDataDirective, SuspenseIfErrorDirective, SuspenseIfLoadingDirective],
   imports: [],
   exports: [SuspenseComponent, SuspenseIfEmptyDirective, SuspenseIfDataDirective, SuspenseIfErrorDirective, SuspenseIfLoadingDirective],
 })

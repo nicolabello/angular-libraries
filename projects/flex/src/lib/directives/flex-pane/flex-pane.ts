@@ -1,5 +1,5 @@
 import {Directive, ElementRef, NgZone, OnDestroy} from '@angular/core';
-import {SubscriptionsBucket} from 'misc';
+import {SubscriptionsBucket} from 'helpers';
 import {Observable, ReplaySubject} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {Size} from '../../models/size';

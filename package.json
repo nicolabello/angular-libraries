@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --project misc && ng build --prod --project flex && ng build --prod --project suspense",
+    "build": "ng build helpers --prod && ng build flex --prod && ng build suspense --prod",
     "test": "ng test --watch false",
     "lint": "ng lint"
   },

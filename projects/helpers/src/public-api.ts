@@ -1,5 +1,5 @@
 /*
- * Public API Surface of misc
+ * Public API Surface of helpers
  */
 
 export * from './lib/common-value-accessor';

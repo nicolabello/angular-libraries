@@ -24,9 +24,9 @@
         "dist/suspense/suspense",
         "dist/suspense"
       ],
-      "misc": [
-        "dist/misc/misc",
-        "dist/misc"
+      "helpers": [
+        "dist/helpers/helpers",
+        "dist/helpers"
       ],
       "flex": [
         "dist/flex/flex",

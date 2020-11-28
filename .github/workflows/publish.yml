@@ -24,7 +24,15 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      - name: Publish
-        run: cd dist
+      - name: Publish flex
+        run: cd dist/flex && npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+      - name: Publish helpers
+        run: cd dist/helpers && npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+      - name: Publish suspense
+        run: cd dist/suspense && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
