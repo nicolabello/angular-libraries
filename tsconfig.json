@@ -20,15 +20,15 @@
       "dom"
     ],
     "paths": {
-      "suspense": [
+      "@nicolabello/ng-suspense": [
         "dist/suspense/suspense",
         "dist/suspense"
       ],
-      "helpers": [
+      "@nicolabello/ng-helpers": [
         "dist/helpers/helpers",
         "dist/helpers"
       ],
-      "flex": [
+      "@nicolabello/ng-flex": [
         "dist/flex/flex",
         "dist/flex"
       ]

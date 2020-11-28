@@ -3,5 +3,6 @@
   "dest": "../../dist/helpers",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": ["@types/resize-observer-browser"]
 }

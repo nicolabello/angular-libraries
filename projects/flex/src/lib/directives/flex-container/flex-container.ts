@@ -1,5 +1,5 @@
 import {Directive, ElementRef, Input, OnDestroy, OnInit, Optional} from '@angular/core';
-import {fromResizeObserver, SubscriptionsBucket} from 'helpers';
+import {fromResizeObserver, SubscriptionsBucket} from '@nicolabello/ng-helpers';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {Size} from '../../models/size';
