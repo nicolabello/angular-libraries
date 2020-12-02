@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {DynamicRouterService} from '../services/dynamic-router.service';
 
 @Pipe({
-  name: 'ftDynamicRouterLinkActive',
+  name: 'nblDynamicRouterLinkActive',
 })
 export class DynamicRouterLinkActivePipe implements PipeTransform {
 
