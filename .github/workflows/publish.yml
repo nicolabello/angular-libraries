@@ -36,3 +36,7 @@ jobs:
         run: cd dist/suspense && npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+      - name: Publish dynamic-router
+        run: cd dist/dynamic-router && npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
