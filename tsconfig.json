@@ -31,6 +31,10 @@
       "@nicolabello/ng-flex": [
         "dist/flex/flex",
         "dist/flex"
+      ],
+      "@nicolabello/ng-dynamic-router": [
+        "dist/dynamic-router/dynamic-router",
+        "dist/dynamic-router"
       ]
     }
   },

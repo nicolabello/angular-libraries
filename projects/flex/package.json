@@ -1,12 +1,12 @@
 {
   "name": "@nicolabello/ng-flex",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "peerDependencies": {
     "@angular/common": "^11.0.1",
-    "@angular/core": "^11.0.1"
+    "@angular/core": "^11.0.1",
+    "@nicolabello/ng-helpers": "*"
   },
   "dependencies": {
-    "tslib": "^2.0.0",
-    "@nicolabello/ng-helpers": "*"
+    "tslib": "^2.0.0"
   }
 }
