@@ -7,5 +7,7 @@
       "@nicolabello/ng-helpers": "@nicolabello/ng-helpers"
     }
   },
-  "whitelistedNonPeerDependencies": ["@nicolabello/ng-helpers"]
+  "whitelistedNonPeerDependencies": [
+    "@nicolabello/ng-helpers"
+  ]
 }

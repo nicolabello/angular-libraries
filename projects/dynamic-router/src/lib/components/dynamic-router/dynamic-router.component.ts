@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 import {Observable, of} from 'rxjs';
 import {CanComponentDeactivate} from '../../helpers/can-component-deactivate';
-import {HistoryRouterService} from '../../services/history-router.service';
 import {DynamicRouterService} from '../../services/dynamic-router.service';
+import {HistoryRouterService} from '../../services/history-router.service';
 
 @Component({
   template: '',

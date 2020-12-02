@@ -1,4 +1,3 @@
-import {transition, trigger} from '@angular/animations';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,

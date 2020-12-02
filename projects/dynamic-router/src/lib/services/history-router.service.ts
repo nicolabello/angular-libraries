@@ -2,7 +2,7 @@ import {Injectable, OnDestroy} from '@angular/core';
 import {ActivatedRoute, NavigationExtras, Router} from '@angular/router';
 import {SubscriptionsBucket} from '@nicolabello/ng-helpers';
 import {BehaviorSubject, merge, Observable} from 'rxjs';
-import {distinctUntilChanged, filter, map} from 'rxjs/operators';
+import {distinctUntilChanged, map} from 'rxjs/operators';
 import {HistoryRoute} from '../helpers/history-route';
 import {ParentRoute} from '../models/parent-route';
 import {HistoryLocationStrategy} from './history-location-strategy.service';

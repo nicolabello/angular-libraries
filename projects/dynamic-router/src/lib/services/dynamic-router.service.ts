@@ -1,9 +1,8 @@
 import {Injectable, OnDestroy} from '@angular/core';
 import {ActivatedRoute, ActivatedRouteSnapshot, NavigationExtras, Params} from '@angular/router';
+import {Base64, Typings} from '@nicolabello/ng-helpers';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {distinctUntilChanged, filter, map, pairwise, startWith, switchMap} from 'rxjs/operators';
-import {Base64} from '@nicolabello/ng-helpers';
-import {Typings} from '@nicolabello/ng-helpers';
 import {CanComponentDeactivate} from '../helpers/can-component-deactivate';
 import {HistoryRoute} from '../helpers/history-route';
 import {NavigationDirection} from '../models/navigation-direction';
@@ -23,11 +22,11 @@ export class DynamicRouterService implements OnDestroy {
   public readonly animatingSubject = new BehaviorSubject<boolean>(false);
   public level = 0;
 
-  public get subviewLevel(): number {
-    return this.level + 1;
+  constructor(private historyRouterService: HistoryRouterService) {
   }
 
-  constructor(private historyRouterService: HistoryRouterService) {
+  public get subviewLevel(): number {
+    return this.level + 1;
   }
 
   public get animating(): Observable<boolean> {
