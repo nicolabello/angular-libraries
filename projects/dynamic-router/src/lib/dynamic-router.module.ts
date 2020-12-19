@@ -1,6 +1,5 @@
 import {LocationStrategy} from '@angular/common';
 import {ModuleWithProviders, NgModule} from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
 import {DynamicRouterOutletComponent} from './components/dynamic-router-outlet/dynamic-router-outlet.component';
 import {DynamicRouterSubviewComponent} from './components/dynamic-router-subview/dynamic-router-subview.component';
@@ -22,7 +21,6 @@ import {HistoryRouterService} from './services/history-router.service';
   ],
   imports: [
     RouterModule,
-    BrowserAnimationsModule,
   ],
   providers: [
     HistoryRouterService,

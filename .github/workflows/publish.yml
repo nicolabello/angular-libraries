@@ -26,17 +26,21 @@ jobs:
         run: npm run build
       - name: Publish flex
         run: cd dist/flex && npm publish --access public
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       - name: Publish helpers
         run: cd dist/helpers && npm publish --access public
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       - name: Publish suspense
         run: cd dist/suspense && npm publish --access public
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       - name: Publish dynamic-router
         run: cd dist/dynamic-router && npm publish --access public
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

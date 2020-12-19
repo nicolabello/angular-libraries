@@ -1,3 +1,4 @@
+import {animate, style, transition, trigger} from '@angular/animations';
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -20,14 +21,23 @@ import {DynamicRouterService} from '../../services/dynamic-router.service';
   selector: 'nbl-dynamic-router-outlet',
   templateUrl: './dynamic-router-outlet.component.html',
   styleUrls: ['./dynamic-router-outlet.component.scss'],
-  // providers: [RouterService],
-  // TODO: allow animation set-up
-  /*animations: [
+  // providers: [DynamicRouterService],
+  animations: [
     trigger('slide', [
-      transition(`* => ${NavigationDirection.Backward}`, Animations.slideInLeft),
-      transition(`* => ${NavigationDirection.Forward}`, Animations.slideInRight),
+      transition(`* => ${NavigationDirection.Backward}`, [
+        style({
+          transform: 'translateX(-100%)',
+        }),
+        animate('225ms ease-out'),
+      ]),
+      transition(`* => ${NavigationDirection.Forward}`, [
+        style({
+          transform: 'translateX(100%)',
+        }),
+        animate('225ms ease-out'),
+      ]),
     ]),
-  ],*/
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicRouterOutletComponent implements OnDestroy, OnInit {
