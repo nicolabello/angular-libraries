@@ -22,19 +22,23 @@
     "paths": {
       "@nicolabello/ng-suspense": [
         "dist/suspense/suspense",
-        "dist/suspense"
+        "dist/suspense",
+        "projects/suspense/src/public-api.ts"
       ],
       "@nicolabello/ng-helpers": [
         "dist/helpers/helpers",
-        "dist/helpers"
+        "dist/helpers",
+        "projects/helpers/src/public-api.ts"
       ],
       "@nicolabello/ng-flex": [
         "dist/flex/flex",
-        "dist/flex"
+        "dist/flex",
+        "projects/flex/src/public-api.ts"
       ],
       "@nicolabello/ng-dynamic-router": [
         "dist/dynamic-router/dynamic-router",
-        "dist/dynamic-router"
+        "dist/dynamic-router",
+        "projects/dynamic-router/src/public-api.ts"
       ]
     }
   },
