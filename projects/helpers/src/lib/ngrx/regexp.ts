@@ -1,4 +1,4 @@
-export class Regexp {
+class _Regexp {
 
   public static email = /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/;
   public static phone = /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/;
@@ -33,3 +33,5 @@ export class Regexp {
   }
 
 }
+
+export const Regexp = _Regexp;

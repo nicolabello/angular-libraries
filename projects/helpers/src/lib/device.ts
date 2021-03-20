@@ -1,7 +1,7 @@
 import {BehaviorSubject, fromEvent, Observable, of} from 'rxjs';
 import {take} from 'rxjs/operators';
 
-export class Device {
+class _Device {
 
   private static _isTouch: BehaviorSubject<boolean>;
   private static _webpSupported: boolean | null = null;
@@ -55,3 +55,5 @@ export class Device {
   }
 
 }
+
+export const Device = _Device;
