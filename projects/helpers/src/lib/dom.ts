@@ -1,4 +1,4 @@
-class _Dom {
+class DomClass {
 
   public static get focusedElement(): Element | null {
     return window.document.activeElement;
@@ -31,4 +31,4 @@ class _Dom {
 
 }
 
-export const Dom = _Dom;
+export const Dom = DomClass;

@@ -10,6 +10,6 @@ export * from './lib/ngrx/from-intersection-observer';
 export * from './lib/ngrx/from-mutation-observer';
 export * from './lib/ngrx/from-resize-observer';
 export * from './lib/normalize-common-js-import';
-export * from './lib/ngrx/regexp';
+export * from './lib/regexp';
 export * from './lib/ngrx/subscriptions-bucket';
 export * from './lib/typings';

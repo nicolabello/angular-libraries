@@ -1,6 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "cli": {
+    "packageManager": "yarn"
+  },
   "newProjectRoot": "projects",
   "projects": {
     "suspense": {
@@ -47,7 +50,7 @@
       "projectType": "library",
       "root": "projects/helpers",
       "sourceRoot": "projects/helpers/src",
-      "prefix": "lib",
+      "prefix": "nbl",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -87,7 +90,7 @@
       "projectType": "library",
       "root": "projects/flex",
       "sourceRoot": "projects/flex/src",
-      "prefix": "lib",
+      "prefix": "nbl",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -127,7 +130,7 @@
       "projectType": "library",
       "root": "projects/dynamic-router",
       "sourceRoot": "projects/dynamic-router/src",
-      "prefix": "lib",
+      "prefix": "nbl",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -164,5 +167,5 @@
       }
     }
   },
-  "defaultProject": "suspense"
+  "defaultProject": "helpers"
 }
