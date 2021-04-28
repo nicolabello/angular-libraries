@@ -9,7 +9,7 @@ class RegexpClass {
 
   // Escape for regexp as suggested in https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
   public static escapePattern(pattern: string): string {
-    return pattern.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+    return pattern?.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
   }
 
   public static getMatchAnyRegExp(pattern: string): RegExp {
