@@ -23,6 +23,14 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Build helpers
+        run: yarn build:helpers
+      - name: Publish helpers
+        run: cd dist/helpers && npm publish --access public
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+
       - name: Build dynamic-router
         run: yarn build:dynamic-router
       - name: Publish dynamic-router
@@ -35,14 +43,6 @@ jobs:
         run: yarn build:flex
       - name: Publish flex
         run: cd dist/flex && npm publish --access public
-        continue-on-error: true
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-
-      - name: Build helpers
-        run: yarn build:helpers
-      - name: Publish helpers
-        run: cd dist/helpers && npm publish --access public
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
