@@ -5,11 +5,17 @@ import {SuspenseIfEmptyDirective} from './directives/suspense-if-empty.directive
 import {SuspenseIfErrorDirective} from './directives/suspense-if-error.directive';
 import {SuspenseIfLoadingDirective} from './directives/suspense-if-loading.directive';
 
+const items = [
+  SuspenseComponent,
+  SuspenseIfEmptyDirective,
+  SuspenseIfDataDirective,
+  SuspenseIfErrorDirective,
+  SuspenseIfLoadingDirective
+];
+
 @NgModule({
-  declarations: [
-    SuspenseComponent, SuspenseIfEmptyDirective, SuspenseIfDataDirective, SuspenseIfErrorDirective, SuspenseIfLoadingDirective],
-  imports: [],
-  exports: [SuspenseComponent, SuspenseIfEmptyDirective, SuspenseIfDataDirective, SuspenseIfErrorDirective, SuspenseIfLoadingDirective],
+  declarations: items,
+  exports: items,
 })
 export class SuspenseModule {
 }

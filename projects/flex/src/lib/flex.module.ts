@@ -5,21 +5,17 @@ import {FlexContainerVerticalDirective} from './directives/flex-container/flex-c
 import {FlexPaneDynamicDirective} from './directives/flex-pane/flex-pane-dynamic.directive';
 import {FlexPaneFixedDirective} from './directives/flex-pane/flex-pane-fixed.directive';
 
+const items = [
+  FlexContainerHorizontalDirective,
+  FlexContainerVerticalDirective,
+  FlexPaneDynamicDirective,
+  FlexPaneFixedDirective,
+  FlexRootComponent,
+];
+
 @NgModule({
-  declarations: [
-    FlexContainerHorizontalDirective,
-    FlexContainerVerticalDirective,
-    FlexPaneDynamicDirective,
-    FlexPaneFixedDirective,
-    FlexRootComponent,
-  ],
-  exports: [
-    FlexContainerHorizontalDirective,
-    FlexContainerVerticalDirective,
-    FlexPaneDynamicDirective,
-    FlexPaneFixedDirective,
-    FlexRootComponent,
-  ],
+  declarations: items,
+  exports: items,
 })
 export class FlexModule {
 }

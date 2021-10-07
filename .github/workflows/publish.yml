@@ -22,25 +22,43 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - name: Install dependencies
         run: yarn install
-      - name: Build
-        run: yarn build
+
+      - name: Build dynamic-router
+        run: yarn build:dynamic-router
+      - name: Publish dynamic-router
+        run: cd dist/dynamic-router && npm publish --access public
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+
+      - name: Build flex
+        run: yarn build:flex
       - name: Publish flex
         run: cd dist/flex && npm publish --access public
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+
+      - name: Build helpers
+        run: yarn build:helpers
       - name: Publish helpers
         run: cd dist/helpers && npm publish --access public
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-      - name: Publish suspense
-        run: cd dist/suspense && npm publish --access public
+
+      - name: Build material-components-web
+        run: yarn build:material-components-web
+      - name: Publish material-components-web
+        run: cd dist/material-components-web && npm publish --access public
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-      - name: Publish dynamic-router
-        run: cd dist/dynamic-router && npm publish --access public
+
+      - name: Build suspense
+        run: yarn build:suspense
+      - name: Publish suspense
+        run: cd dist/suspense && npm publish --access public
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

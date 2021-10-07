@@ -39,6 +39,10 @@
         "dist/dynamic-router/dynamic-router",
         "dist/dynamic-router",
         "projects/dynamic-router/src/public-api.ts"
+      ],
+      "material-components-web": [
+        "dist/material-components-web/material-components-web",
+        "dist/material-components-web"
       ]
     }
   },

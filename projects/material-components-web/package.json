@@ -1,10 +1,10 @@
 {
-  "name": "@nicolabello/ng-dynamic-router",
+  "name": "@nicolabello/ng-material-components-web",
   "version": "0.1.0",
   "peerDependencies": {
     "@angular/common": "^12.0.0",
     "@angular/core": "^12.0.0",
-    "@nicolabello/ng-helpers": "^0.1.0"
+    "@nicolabello/material-components-web": "^13.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

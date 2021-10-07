@@ -6,8 +6,7 @@ import {SuspenseService} from '../services/suspense.service';
 @Component({
   selector: 'nbl-suspense',
   template: `
-    <ng-content></ng-content>
-  `,
+    <ng-content></ng-content>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [SuspenseService],
 })
@@ -34,7 +33,6 @@ export class SuspenseComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    // TODO: is the markForCheck necessary?
     this.changesSubscription = this.suspenseService.changes.subscribe(() => this.cdr.markForCheck());
   }
 

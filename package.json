@@ -4,7 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build helpers --configuration production && ng build flex --configuration production && ng build suspense --configuration production && ng build dynamic-router --configuration production",
+    "build:dynamic-router": "ng build dynamic-router --configuration production",
+    "build:flex": "ng build flex --configuration production",
+    "build:helpers": "ng build helpers --configuration production",
+    "build:material-components-web": "ng build material-components-web --configuration production",
+    "build:suspense": "ng build suspense --configuration production",
     "test": "ng test --watch false",
     "lint": "ng lint"
   },
@@ -18,6 +22,7 @@
     "@angular/platform-browser": "~12.2.9",
     "@angular/platform-browser-dynamic": "~12.2.9",
     "@angular/router": "~12.2.9",
+    "@nicolabello/material-components-web": "^13.0.0",
     "rxjs": "~6.6.6",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
