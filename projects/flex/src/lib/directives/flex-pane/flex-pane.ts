@@ -2,7 +2,7 @@ import {Directive, ElementRef, NgZone, OnDestroy} from '@angular/core';
 import {SubscriptionsBucket} from '@nicolabello/ng-helpers';
 import {Observable, ReplaySubject} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
-import {Size} from '../../models/size';
+import {Size} from '../../types/size';
 import {FlexContainerService} from '../../services/flex-container.service';
 import {FlexPaneService} from '../../services/flex-pane.service';
 import {FlexContainer} from '../flex-container/flex-container';

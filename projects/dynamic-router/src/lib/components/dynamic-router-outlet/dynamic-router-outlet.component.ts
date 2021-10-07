@@ -14,7 +14,7 @@ import {
 } from '@angular/core';
 import {SubscriptionsBucket} from '@nicolabello/ng-helpers';
 import {HistoryRoute} from '../../helpers/history-route';
-import {NavigationDirection} from '../../models/navigation-direction';
+import {NavigationDirection} from '../../types/navigation-direction';
 import {DynamicRouterService} from '../../services/dynamic-router.service';
 
 @Component({

@@ -2,7 +2,7 @@ import {Directive, ElementRef, Input, OnDestroy, OnInit, Optional} from '@angula
 import {fromResizeObserver, SubscriptionsBucket} from '@nicolabello/ng-helpers';
 import {Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
-import {Size} from '../../models/size';
+import {Size} from '../../types/size';
 import {FlexContainerService} from '../../services/flex-container.service';
 import {FlexPaneService} from '../../services/flex-pane.service';
 import {FlexRootService} from '../../services/flex-root.service';

@@ -5,8 +5,8 @@ import {BehaviorSubject, Observable, of} from 'rxjs';
 import {distinctUntilChanged, filter, map, pairwise, startWith, switchMap} from 'rxjs/operators';
 import {CanComponentDeactivate} from '../helpers/can-component-deactivate';
 import {HistoryRoute} from '../helpers/history-route';
-import {NavigationDirection} from '../models/navigation-direction';
-import {Subview, SubviewWithParams} from '../models/subview';
+import {NavigationDirection} from '../types/navigation-direction';
+import {Subview, SubviewWithParams} from '../types/subview';
 import {HistoryRouterService} from './history-router.service';
 
 declare type GlobalParams = {

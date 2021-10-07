@@ -1,5 +1,5 @@
 import {Directive, OnDestroy, OnInit} from '@angular/core';
-import {SuspenseError} from '../models/suspense-types';
+import {SuspenseError} from '../types/suspense';
 import {SuspenseIfDirective} from './suspense-if.directive';
 
 @Directive({

@@ -4,7 +4,7 @@ import {SubscriptionsBucket} from '@nicolabello/ng-helpers';
 import {BehaviorSubject, merge, Observable} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {HistoryRoute} from '../helpers/history-route';
-import {ParentRoute} from '../models/parent-route';
+import {ParentRoute} from '../types/parent-route';
 import {HistoryLocationStrategy} from './history-location-strategy.service';
 
 @Injectable()

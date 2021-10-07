@@ -1,9 +1,9 @@
 import {LocationChangeEvent, PathLocationStrategy, PlatformLocation} from '@angular/common';
 import {Injectable} from '@angular/core';
 import {Params} from '@angular/router';
-import {HistoryState} from '../models/history-state';
-import {NavigationDirection} from '../models/navigation-direction';
-import {ParentRoute} from '../models/parent-route';
+import {HistoryState} from '../types/history-state';
+import {NavigationDirection} from '../types/navigation-direction';
+import {ParentRoute} from '../types/parent-route';
 
 export interface StateData extends Params {
   parents?: ParentRoute[];

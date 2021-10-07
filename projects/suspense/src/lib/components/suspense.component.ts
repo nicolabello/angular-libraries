@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {SuspenseData, SuspenseError, SuspenseInput, SuspenseLoading} from '../models/suspense-types';
+import {SuspenseData, SuspenseError, SuspenseInput, SuspenseLoading} from '../types/suspense';
 import {SuspenseService} from '../services/suspense.service';
 
 @Component({

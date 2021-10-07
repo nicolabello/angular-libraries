@@ -37,9 +37,9 @@ export abstract class SuspenseIfDirective<T> implements OnInit, OnDestroy {
       const value = this.value;
 
       if (this.embeddedViewRef) {
-        this.embeddedViewRef.context.implicit = value;
+        this.embeddedViewRef.context.$implicit = value;
       } else {
-        this.embeddedViewRef = this.viewContainer.createEmbeddedView(this.templateRef, {implicit: value});
+        this.embeddedViewRef = this.viewContainer.createEmbeddedView(this.templateRef, {$implicit: value});
       }
 
     } else if (this.embeddedViewRef) {

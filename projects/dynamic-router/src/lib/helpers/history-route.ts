@@ -1,8 +1,8 @@
 import {Type} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {HistoryState} from '../models/history-state';
-import {NavigationDirection} from '../models/navigation-direction';
-import {ParentRoute} from '../models/parent-route';
+import {HistoryState} from '../types/history-state';
+import {NavigationDirection} from '../types/navigation-direction';
+import {ParentRoute} from '../types/parent-route';
 
 export class HistoryRoute {
 

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, SkipSelf} from '@angular/core';
 import {SubscriptionsBucket} from '@nicolabello/ng-helpers';
-import {Subview} from '../../models/subview';
+import {Subview} from '../../types/subview';
 import {DynamicRouterService} from '../../services/dynamic-router.service';
 
 @Component({

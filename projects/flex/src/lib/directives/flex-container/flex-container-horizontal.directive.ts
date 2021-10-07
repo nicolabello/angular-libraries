@@ -1,5 +1,5 @@
 import {Directive, HostBinding} from '@angular/core';
-import {Size} from '../../models/size';
+import {Size} from '../../types/size';
 import {FlexContainerService} from '../../services/flex-container.service';
 import {FlexContainer} from './flex-container';
 
