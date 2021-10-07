@@ -1,6 +1,7 @@
 import {Directive, EmbeddedViewRef, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {SuspenseService} from '../services/suspense.service';
+import {SuspenseIfContext} from '../types/suspense';
 
 @Directive()
 export abstract class SuspenseIfDirective<T> implements OnInit, OnDestroy {
@@ -30,16 +31,14 @@ export abstract class SuspenseIfDirective<T> implements OnInit, OnDestroy {
 
   private updateView(): void {
 
-    const isVisible = this.isVisible;
+    if (this.isVisible) {
 
-    if (isVisible) {
-
-      const value = this.value;
+      const context = new SuspenseIfContext(this.value);
 
       if (this.embeddedViewRef) {
-        this.embeddedViewRef.context.$implicit = value;
+        this.embeddedViewRef.context = context;
       } else {
-        this.embeddedViewRef = this.viewContainer.createEmbeddedView(this.templateRef, {$implicit: value});
+        this.embeddedViewRef = this.viewContainer.createEmbeddedView(this.templateRef, context);
       }
 
     } else if (this.embeddedViewRef) {
