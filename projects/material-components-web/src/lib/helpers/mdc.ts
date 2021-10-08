@@ -11,14 +11,17 @@ export const toInputValue = (value: any): string => {
   return '';
 };
 
+function conditionallyUpdateAttribute<T>(instance: T, attribute: keyof T, value: any): void {
+  if (instance[attribute] !== value) {
+    instance[attribute] = value;
+  }
+}
+
 export const updateMDCInstance = (instance?: MDCTextField | MDCSelect, props?: MDCTextFieldProps | MDCSelectProps): void => {
   if (instance && props) {
-    const value = toInputValue(props.value);
-    if (instance.value !== value) {
-      instance.value = value;
-    }
-    // instance.required = !!props.required;
-    // instance.disabled = !!props.disabled;
-    instance.valid = !!props.valid;
+    conditionallyUpdateAttribute(instance, 'value', toInputValue(props.value));
+    conditionallyUpdateAttribute(instance, 'required', !!props.required);
+    conditionallyUpdateAttribute(instance, 'disabled', !!props.disabled);
+    conditionallyUpdateAttribute(instance, 'valid', !!props.valid);
   }
 };

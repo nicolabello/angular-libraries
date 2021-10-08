@@ -2,7 +2,7 @@
  * Public API Surface of material-components-web
  */
 
-export * from './lib/directives/card.directive';
+export * from './lib/directives/card-primary-action.directive';
 export * from './lib/directives/fab.directive';
 export * from './lib/directives/list.directive';
 export * from './lib/directives/menu.directive';

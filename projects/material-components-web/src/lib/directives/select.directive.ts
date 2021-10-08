@@ -3,11 +3,12 @@ import {MDCSelect} from '@nicolabello/material-components-web';
 import {updateMDCInstance} from '../helpers/mdc';
 
 @Directive({
-  selector: '[mdcSelect]',
+  selector: '.mdc-select',
+  exportAs: 'mdcSelect'
 })
 export class SelectDirective implements AfterViewInit, OnChanges, OnDestroy {
 
-  private instance?: MDCSelect;
+  public instance?: MDCSelect;
 
   @Input() private required?: boolean;
   @Input() private disabled?: boolean;
@@ -20,7 +21,7 @@ export class SelectDirective implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   public ngAfterViewInit(): void {
-    this.instance = MDCSelect.attachTo(this.elementRef.nativeElement);
+    this.instance = new MDCSelect(this.elementRef.nativeElement);
     this.instance.listen('MDCSelect:change', this.emitInstanceValue);
     this.updateMDCInstance();
   }
@@ -34,7 +35,7 @@ export class SelectDirective implements AfterViewInit, OnChanges, OnDestroy {
     this.updateMDCInstance();
   }
 
-  private updateMDCInstance() {
+  private updateMDCInstance(): void {
     updateMDCInstance(this.instance, {
       required: this.required,
       disabled: this.disabled,
@@ -45,6 +46,6 @@ export class SelectDirective implements AfterViewInit, OnChanges, OnDestroy {
 
   private emitInstanceValue = () => {
     this.valueChange.emit(this.instance?.value);
-  };
+  }
 
 }

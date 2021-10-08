@@ -2,17 +2,18 @@ import {AfterViewInit, Directive, ElementRef, OnDestroy} from '@angular/core';
 import {MDCTextFieldHelperText} from '@nicolabello/material-components-web';
 
 @Directive({
-  selector: '[mdcTextFieldHelperText]',
+  selector: '.mdc-text-field-helper-text',
+  exportAs: 'mdcTextFieldHelperText'
 })
 export class TextFieldHelperTextDirective implements AfterViewInit, OnDestroy {
 
-  private instance?: MDCTextFieldHelperText;
+  public instance?: MDCTextFieldHelperText;
 
   constructor(private elementRef: ElementRef<HTMLElement>) {
   }
 
   public ngAfterViewInit(): void {
-    this.instance = MDCTextFieldHelperText.attachTo(this.elementRef.nativeElement);
+    this.instance = new MDCTextFieldHelperText(this.elementRef.nativeElement);
   }
 
   public ngOnDestroy(): void {

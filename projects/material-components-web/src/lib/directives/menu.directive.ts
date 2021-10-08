@@ -2,19 +2,20 @@ import {AfterViewInit, Directive, ElementRef, Input, OnDestroy} from '@angular/c
 import {MDCMenu} from '@nicolabello/material-components-web';
 
 @Directive({
-  selector: '[mdcMenu]'
+  selector: '.mdc-menu',
+  exportAs: 'mdcMenu'
 })
 export class MenuDirective implements AfterViewInit, OnDestroy {
 
   @Input() private anchorElement?: HTMLElement;
 
-  private instance?: MDCMenu;
+  public instance?: MDCMenu;
 
   constructor(private elementRef: ElementRef<HTMLElement>) {
   }
 
   public ngAfterViewInit(): void {
-    this.instance = MDCMenu.attachTo(this.elementRef.nativeElement);
+    this.instance = new MDCMenu(this.elementRef.nativeElement);
     if (this.anchorElement) {
       this.instance.setAnchorElement(this.anchorElement);
     }
@@ -25,7 +26,7 @@ export class MenuDirective implements AfterViewInit, OnDestroy {
     this.instance?.destroy();
   }
 
-  public toggle(open?: boolean) {
+  public toggle(open?: boolean): void {
     if (this.instance) {
       this.instance.open = open === true || open === false ? open : !this.instance.open;
     }

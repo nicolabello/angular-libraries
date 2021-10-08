@@ -7,10 +7,10 @@ import {SuspenseIfContext} from '../types/suspense';
 export abstract class SuspenseIfDirective<T> implements OnInit, OnDestroy {
 
   private subscriptions = new Subscription();
-  private embeddedViewRef: EmbeddedViewRef<any> | null = null;
+  private embeddedViewRef: EmbeddedViewRef<SuspenseIfContext<T>> | null = null;
 
   constructor(
-    protected templateRef: TemplateRef<any>,
+    protected templateRef: TemplateRef<SuspenseIfContext<T>>,
     protected viewContainer: ViewContainerRef,
     protected suspenseService: SuspenseService,
   ) {
@@ -21,7 +21,7 @@ export abstract class SuspenseIfDirective<T> implements OnInit, OnDestroy {
   public abstract get value(): T;
 
   public ngOnInit(): void {
-    this.subscriptions.add(this.suspenseService.changes.subscribe(() => this.updateView()));
+    this.subscriptions.add(this.suspenseService.change.subscribe(() => this.updateView()));
     this.updateView();
   }
 
@@ -33,7 +33,7 @@ export abstract class SuspenseIfDirective<T> implements OnInit, OnDestroy {
 
     if (this.isVisible) {
 
-      const context = new SuspenseIfContext(this.value);
+      const context = new SuspenseIfContext<T>(this.value);
 
       if (this.embeddedViewRef) {
         this.embeddedViewRef.context = context;

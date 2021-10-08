@@ -66,14 +66,14 @@ class TestComponent {
   public loading: any;
   public error: any;
 
-  @ViewChild(SuspenseIfErrorDirective) public suspenseIfDirective?: SuspenseIfErrorDirective;
+  @ViewChild(SuspenseIfErrorDirective) public suspenseIfDirective?: SuspenseIfErrorDirective<any>;
 }
 
 describe('SuspenseIfErrorDirective', () => {
 
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
-  let directive: SuspenseIfErrorDirective | undefined;
+  let directive: SuspenseIfErrorDirective<any> | undefined;
 
   beforeEach(
     waitForAsync(() => {

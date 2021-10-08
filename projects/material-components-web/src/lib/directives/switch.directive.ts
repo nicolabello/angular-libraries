@@ -2,17 +2,18 @@ import {AfterViewInit, Directive, ElementRef, OnDestroy} from '@angular/core';
 import {MDCSwitch} from '@nicolabello/material-components-web';
 
 @Directive({
-  selector: '[mdcSwitch]',
+  selector: '.mdc-switch',
+  exportAs: 'mdcSwitch'
 })
 export class SwitchDirective implements AfterViewInit, OnDestroy {
 
-  private instance?: MDCSwitch;
+  public instance?: MDCSwitch;
 
   constructor(private elementRef: ElementRef<HTMLButtonElement>) {
   }
 
   public ngAfterViewInit(): void {
-    this.instance = MDCSwitch.attachTo(this.elementRef.nativeElement);
+    this.instance = new MDCSwitch(this.elementRef.nativeElement);
   }
 
   public ngOnDestroy(): void {

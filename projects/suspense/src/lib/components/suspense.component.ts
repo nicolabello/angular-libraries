@@ -33,7 +33,7 @@ export class SuspenseComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.changesSubscription = this.suspenseService.changes.subscribe(() => this.cdr.markForCheck());
+    this.changesSubscription = this.suspenseService.change.subscribe(() => this.cdr.markForCheck());
   }
 
   public ngOnDestroy(): void {

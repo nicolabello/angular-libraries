@@ -1,18 +1,37 @@
-import {Directive, OnDestroy, OnInit} from '@angular/core';
-import {SuspenseData} from '../types/suspense';
+import {Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef} from '@angular/core';
+import {SuspenseIfContext, SuspenseInput} from '../types/suspense';
 import {SuspenseIfDirective} from './suspense-if.directive';
+import {SuspenseService} from '../services/suspense.service';
 
 @Directive({
   selector: '[nblSuspenseIfData]',
 })
-export class SuspenseIfDataDirective extends SuspenseIfDirective<SuspenseData> implements OnInit, OnDestroy {
+export class SuspenseIfDataDirective<T> extends SuspenseIfDirective<T> implements OnInit, OnDestroy {
 
-  public get isVisible(): boolean {
-    return !this.suspenseService.loading.booleanValue && !this.suspenseService.error.booleanValue && this.suspenseService.data.booleanValue;
+  @Input() protected nblSuspenseIfDataOfType?: SuspenseInput<T>;
+
+  constructor(
+    templateRef: TemplateRef<SuspenseIfContext<T>>,
+    viewContainer: ViewContainerRef,
+    suspenseService: SuspenseService
+  ) {
+    super(templateRef, viewContainer, suspenseService);
   }
 
-  public get value(): SuspenseData {
+  public get isVisible(): boolean {
+    return (
+      !this.suspenseService.loading.booleanValue &&
+      !this.suspenseService.error.booleanValue &&
+      this.suspenseService.data.booleanValue
+    );
+  }
+
+  public get value(): T {
     return this.suspenseService.data.value;
+  }
+
+  public static ngTemplateContextGuard<T>(dir: SuspenseIfDataDirective<T>, ctx: unknown): ctx is SuspenseIfContext<T> {
+    return true;
   }
 
 }

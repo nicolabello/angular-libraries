@@ -66,14 +66,14 @@ class TestComponent {
   public loading: any;
   public error: any;
 
-  @ViewChild(SuspenseIfEmptyDirective) public suspenseIfDirective?: SuspenseIfEmptyDirective;
+  @ViewChild(SuspenseIfEmptyDirective) public suspenseIfDirective?: SuspenseIfEmptyDirective<any>;
 }
 
 describe('SuspenseIfEmptyDirective', () => {
 
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
-  let directive: SuspenseIfEmptyDirective | undefined;
+  let directive: SuspenseIfEmptyDirective<any> | undefined;
 
   beforeEach(
     waitForAsync(() => {

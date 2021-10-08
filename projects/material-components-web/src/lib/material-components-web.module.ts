@@ -1,6 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CardDirective} from './directives/card.directive';
-import {FabDirective} from './directives/fab.directive';
 import {ListDirective} from './directives/list.directive';
 import {MenuDirective} from './directives/menu.directive';
 import {RippleDirective} from './directives/ripple.directive';
@@ -13,8 +11,6 @@ import {TextFieldHelperTextDirective} from './directives/text-field-helper-text.
 import {TopAppBarDirective} from './directives/top-app-bar.directive';
 
 const items = [
-  CardDirective,
-  FabDirective,
   ListDirective,
   MenuDirective,
   RippleDirective,
