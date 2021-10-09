@@ -10,8 +10,8 @@ export class SuspenseService implements OnDestroy {
   public readonly loading = new SuspenseValue<SuspenseLoading>();
   public readonly error = new SuspenseValue<SuspenseError>();
 
-  public get change(): Observable<void> {
-    return merge(this.data.change, this.loading.change, this.error.change);
+  public get valuesChanges(): Observable<void> {
+    return merge(this.data.valueChanges, this.loading.valueChanges, this.error.valueChanges);
   }
 
   public ngOnDestroy(): void {

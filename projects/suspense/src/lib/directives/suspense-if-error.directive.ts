@@ -8,7 +8,7 @@ import {SuspenseService} from '../services/suspense.service';
 })
 export class SuspenseIfErrorDirective<T> extends SuspenseIfDirective<T> implements OnInit, OnDestroy {
 
-  @Input() protected nblSuspenseIfErrorOfType?: SuspenseInput<T>;
+  @Input() public nblSuspenseIfErrorOfType?: SuspenseInput<T>;
 
   constructor(
     templateRef: TemplateRef<SuspenseIfContext<T>>,

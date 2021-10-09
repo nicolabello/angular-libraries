@@ -21,7 +21,7 @@ export class SuspenseValue<T = any> {
   private valueSubscription?: Subscription;
   private changeSubject = new Subject<void>();
 
-  public get change(): Observable<void> {
+  public get valueChanges(): Observable<void> {
     return this.changeSubject.asObservable();
   }
 

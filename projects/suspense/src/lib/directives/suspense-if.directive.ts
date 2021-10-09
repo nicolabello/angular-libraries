@@ -21,7 +21,7 @@ export abstract class SuspenseIfDirective<T> implements OnInit, OnDestroy {
   public abstract get value(): T;
 
   public ngOnInit(): void {
-    this.subscriptions.add(this.suspenseService.change.subscribe(() => this.updateView()));
+    this.subscriptions.add(this.suspenseService.valuesChanges.subscribe(() => this.updateView()));
     this.updateView();
   }
 
