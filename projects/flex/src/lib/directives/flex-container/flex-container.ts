@@ -18,7 +18,7 @@ export abstract class FlexContainer implements OnInit, OnDestroy {
   protected dynamicPane?: FlexPaneDynamicDirective;
   protected fixedPanesAfter: FlexPaneFixedDirective[] = [];
   private subscriptions = new SubscriptionsBucket();
-  @Input() private fromRootContainer?: boolean;
+  @Input() public fromRootContainer?: boolean;
   // @ts-ignore
   private parentElement: HTMLElement;
   private hostElement: HTMLElement;

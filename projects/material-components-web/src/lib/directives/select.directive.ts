@@ -10,10 +10,10 @@ export class SelectDirective implements AfterViewInit, OnChanges, OnDestroy {
 
   public instance?: MDCSelect;
 
-  @Input() private required?: boolean;
-  @Input() private disabled?: boolean;
-  @Input() private valid?: boolean;
-  @Input() private value?: any;
+  @Input() public required?: boolean;
+  @Input() public disabled?: boolean;
+  @Input() public valid?: boolean;
+  @Input() public value?: any;
 
   @Output() private valueChange = new EventEmitter<string>();
 

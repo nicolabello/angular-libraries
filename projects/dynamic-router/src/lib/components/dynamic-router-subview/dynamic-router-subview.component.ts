@@ -12,7 +12,7 @@ import {DynamicRouterService} from '../../services/dynamic-router.service';
 export class DynamicRouterSubviewComponent implements OnInit, OnDestroy {
 
   public active: Subview;
-  @Input() private level = 0;
+  @Input() public level = 0;
   private subscriptions = new SubscriptionsBucket();
 
   constructor(@SkipSelf() private parentRouterService: DynamicRouterService,

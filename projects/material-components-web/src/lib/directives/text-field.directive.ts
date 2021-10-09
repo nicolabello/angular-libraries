@@ -12,10 +12,10 @@ export class TextFieldDirective implements AfterViewInit, OnChanges, OnDestroy {
   public instance?: MDCTextField;
   private subscriptions = new SubscriptionsBucket();
 
-  @Input() private required?: boolean;
-  @Input() private disabled?: boolean;
-  @Input() private valid?: boolean;
-  @Input() private value?: any;
+  @Input() public required?: boolean;
+  @Input() public disabled?: boolean;
+  @Input() public valid?: boolean;
+  @Input() public value?: any;
 
   constructor(private elementRef: ElementRef<HTMLElement>) {
   }

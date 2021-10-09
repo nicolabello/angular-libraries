@@ -4,6 +4,7 @@ import {
   ControlValueAccessor,
   FormControl,
   FormGroupDirective,
+  FormGroupName,
   ValidationErrors,
   Validator,
   ValidatorFn,
@@ -27,9 +28,12 @@ export class CommonValueAccessor<T> implements ControlValueAccessor, Validator {
   protected onChange: (value: T) => void = emptyFunction;
   protected onTouch: () => void = emptyFunction;
   protected onValidatorChange: () => void = emptyFunction;
-  @Input() private formControlName?: string;
+  @Input() public formControlName?: string;
 
-  constructor(protected cdr: ChangeDetectorRef, @Optional() private formGroupDirective: FormGroupDirective) {
+  constructor(
+    protected cdr: ChangeDetectorRef,
+    @Optional() private formGroupDirective: FormGroupDirective,
+    @Optional() private formGroupNameDirective: FormGroupName) {
   }
 
   // tslint:disable-next-line: no-input-rename
@@ -37,9 +41,22 @@ export class CommonValueAccessor<T> implements ControlValueAccessor, Validator {
 
   public get formControl(): AbstractControl | null {
 
+    // If instantiated with [formGroup] > formGroupName > formControlName
+    if (this.formGroupNameDirective && this.formControlName) {
+      const control = this.formGroupNameDirective.control.get(this.formControlName);
+      if (!control) {
+        throw new Error(`CommonValueAccessor: unable to get the control '${this.formControlName}' from the parent 'formGroupName'`);
+      }
+      return control;
+    }
+
     // If instantiated with [formGroup] > formControlName
     if (this.formGroupDirective && this.formControlName) {
-      return this.formGroupDirective.control.get(this.formControlName);
+      const control = this.formGroupDirective.control.get(this.formControlName);
+      if (!control) {
+        throw new Error(`CommonValueAccessor: unable to get the control '${this.formControlName}' from the parent 'formGroup'`);
+      }
+      return control;
     }
 
     // If instantiated with [formControl]

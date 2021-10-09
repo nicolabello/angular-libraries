@@ -7,7 +7,7 @@ import {MDCMenu} from '@nicolabello/material-components-web';
 })
 export class MenuDirective implements AfterViewInit, OnDestroy {
 
-  @Input() private anchorElement?: HTMLElement;
+  @Input() public anchorElement?: HTMLElement;
 
   public instance?: MDCMenu;
 

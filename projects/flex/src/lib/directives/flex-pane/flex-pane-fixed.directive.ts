@@ -11,7 +11,7 @@ import {FlexPane} from './flex-pane';
 })
 export class FlexPaneFixedDirective extends FlexPane implements AfterViewInit, OnDestroy {
 
-  @Input() private observeChanges = false;
+  @Input() public observeChanges = false;
 
   constructor(hostElementRef: ElementRef,
               flexContainerService: FlexContainerService,
