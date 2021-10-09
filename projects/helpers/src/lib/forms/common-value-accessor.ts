@@ -1,10 +1,9 @@
-import {ChangeDetectorRef, Directive, Input, Optional} from '@angular/core';
+import {ChangeDetectorRef, Directive, Host, Input, Optional, SkipSelf} from '@angular/core';
 import {
   AbstractControl,
+  ControlContainer,
   ControlValueAccessor,
   FormControl,
-  FormGroupDirective,
-  FormGroupName,
   ValidationErrors,
   Validator,
   ValidatorFn,
@@ -32,8 +31,9 @@ export class CommonValueAccessor<T> implements ControlValueAccessor, Validator {
 
   constructor(
     protected cdr: ChangeDetectorRef,
-    @Optional() private formGroupDirective: FormGroupDirective,
-    @Optional() private formGroupNameDirective: FormGroupName) {
+    // @Optional() private formGroupDirective: FormGroupDirective,
+    // @Optional() private formGroupNameDirective: FormGroupName,
+    @Host() @SkipSelf() @Optional() private controlContainer: ControlContainer) {
   }
 
   // tslint:disable-next-line: no-input-rename
@@ -42,17 +42,25 @@ export class CommonValueAccessor<T> implements ControlValueAccessor, Validator {
   public get formControl(): AbstractControl | null {
 
     // If instantiated with [formGroup] > formGroupName > formControlName
-    if (this.formGroupNameDirective && this.formControlName) {
-      const control = this.formGroupNameDirective.control.get(this.formControlName);
-      if (!control) {
-        throw new Error(`CommonValueAccessor: unable to get the control '${this.formControlName}' from the parent 'formGroupName'`);
-      }
-      return control;
-    }
+    // if (this.formGroupNameDirective && this.formControlName) {
+    //   const control = this.formGroupNameDirective.control.get(this.formControlName);
+    //   if (!control) {
+    //     throw new Error(`CommonValueAccessor: unable to get the control '${this.formControlName}' from the parent 'formGroupName'`);
+    //   }
+    //   return control;
+    // }
 
     // If instantiated with [formGroup] > formControlName
-    if (this.formGroupDirective && this.formControlName) {
-      const control = this.formGroupDirective.control.get(this.formControlName);
+    // if (this.formGroupDirective && this.formControlName) {
+    //   const control = this.formGroupDirective.control.get(this.formControlName);
+    //   if (!control) {
+    //     throw new Error(`CommonValueAccessor: unable to get the control '${this.formControlName}' from the parent 'formGroup'`);
+    //   }
+    //   return control;
+    // }
+
+    if (this.controlContainer?.control && this.formControlName) {
+      const control = this.controlContainer.control.get(this.formControlName);
       if (!control) {
         throw new Error(`CommonValueAccessor: unable to get the control '${this.formControlName}' from the parent 'formGroup'`);
       }

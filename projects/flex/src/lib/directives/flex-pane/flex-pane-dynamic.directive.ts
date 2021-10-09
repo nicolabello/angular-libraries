@@ -1,5 +1,4 @@
-import {AfterViewInit, Directive, ElementRef, NgZone, OnDestroy} from '@angular/core';
-import {FlexContainerService} from '../../services/flex-container.service';
+import {AfterViewInit, Directive, OnDestroy} from '@angular/core';
 import {FlexPaneService} from '../../services/flex-pane.service';
 import {FlexPane} from './flex-pane';
 
@@ -8,13 +7,6 @@ import {FlexPane} from './flex-pane';
   providers: [FlexPaneService],
 })
 export class FlexPaneDynamicDirective extends FlexPane implements AfterViewInit, OnDestroy {
-
-  constructor(hostElementRef: ElementRef,
-              flexContainerService: FlexContainerService,
-              flexPaneService: FlexPaneService,
-              ngZone: NgZone) {
-    super(hostElementRef, flexContainerService, flexPaneService, ngZone);
-  }
 
   public ngAfterViewInit(): void {
     this.flexContainer.setDynamicPane(this);

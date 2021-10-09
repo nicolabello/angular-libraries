@@ -1,4 +1,4 @@
-import {Directive, ElementRef, NgZone, OnDestroy} from '@angular/core';
+import {Directive, ElementRef, OnDestroy} from '@angular/core';
 import {SubscriptionsBucket} from '@nicolabello/ng-helpers';
 import {Observable, ReplaySubject} from 'rxjs';
 import {distinctUntilChanged, map} from 'rxjs/operators';
@@ -18,8 +18,7 @@ export abstract class FlexPane implements OnDestroy {
 
   constructor(hostElementRef: ElementRef,
               flexContainerService: FlexContainerService,
-              flexPaneService: FlexPaneService,
-              protected ngZone: NgZone) {
+              flexPaneService: FlexPaneService) {
 
     this.hostElement = hostElementRef.nativeElement;
     this.hostElement.style.margin = '0';

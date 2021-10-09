@@ -1,7 +1,6 @@
-import {AfterViewInit, Directive, ElementRef, Input, NgZone, OnDestroy} from '@angular/core';
+import {AfterViewInit, Directive, Input, OnDestroy} from '@angular/core';
 import {fromMutationObserver} from '@nicolabello/ng-helpers';
 import {debounceTime} from 'rxjs/operators';
-import {FlexContainerService} from '../../services/flex-container.service';
 import {FlexPaneService} from '../../services/flex-pane.service';
 import {FlexPane} from './flex-pane';
 
@@ -12,13 +11,6 @@ import {FlexPane} from './flex-pane';
 export class FlexPaneFixedDirective extends FlexPane implements AfterViewInit, OnDestroy {
 
   @Input() public observeChanges = false;
-
-  constructor(hostElementRef: ElementRef,
-              flexContainerService: FlexContainerService,
-              flexPaneService: FlexPaneService,
-              ngZone: NgZone) {
-    super(hostElementRef, flexContainerService, flexPaneService, ngZone);
-  }
 
   public ngAfterViewInit(): void {
 
