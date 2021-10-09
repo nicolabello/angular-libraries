@@ -2,13 +2,13 @@ import {AfterViewInit, Directive, Input, OnDestroy} from '@angular/core';
 import {fromMutationObserver} from '@nicolabello/ng-helpers';
 import {debounceTime} from 'rxjs/operators';
 import {FlexPaneService} from '../../services/flex-pane.service';
-import {FlexPane} from './flex-pane';
+import {FlexPaneDirective} from './flex-pane.directive';
 
 @Directive({
   selector: '[nblFlexPaneFixed]',
   providers: [FlexPaneService],
 })
-export class FlexPaneFixedDirective extends FlexPane implements AfterViewInit, OnDestroy {
+export class FlexPaneFixedDirective extends FlexPaneDirective implements AfterViewInit, OnDestroy {
 
   @Input() public observeChanges = false;
 

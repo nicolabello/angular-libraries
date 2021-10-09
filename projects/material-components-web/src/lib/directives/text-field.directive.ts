@@ -1,23 +1,15 @@
-import {AfterViewInit, Directive, ElementRef, Input, OnChanges, OnDestroy} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, OnChanges, OnDestroy} from '@angular/core';
 import {MDCTextField} from '@nicolabello/material-components-web';
-import {SubscriptionsBucket} from '@nicolabello/ng-helpers';
-import {updateMDCInstance} from '../helpers/mdc';
+import {InputDirective} from '../helpers/input.directive';
 
 @Directive({
   selector: '.mdc-text-field',
   exportAs: 'mdcTextField'
 })
-export class TextFieldDirective implements AfterViewInit, OnChanges, OnDestroy {
-
-  public instance?: MDCTextField;
-  private subscriptions = new SubscriptionsBucket();
-
-  @Input() public required?: boolean;
-  @Input() public disabled?: boolean;
-  @Input() public valid?: boolean;
-  @Input() public value?: any;
+export class TextFieldDirective extends InputDirective<MDCTextField> implements AfterViewInit, OnChanges, OnDestroy {
 
   constructor(private elementRef: ElementRef<HTMLElement>) {
+    super();
   }
 
   public ngAfterViewInit(): void {
@@ -31,17 +23,8 @@ export class TextFieldDirective implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.subscriptions.unsubscribeAll();
+    super.ngOnDestroy();
     this.instance?.destroy();
-  }
-
-  private updateMDCInstance(): void {
-    updateMDCInstance(this.instance, {
-      required: this.required,
-      disabled: this.disabled,
-      valid: this.valid,
-      value: this.value,
-    });
   }
 
 }

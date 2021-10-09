@@ -1,5 +1,4 @@
-import {MDCSelect, MDCTextField} from '@nicolabello/material-components-web';
-import {MDCSelectProps, MDCTextFieldProps} from '../types/mdc';
+import {MDCInputComponent} from '../types/mdc';
 
 export const toInputValue = (value: any): string => {
   if (typeof value === 'string') {
@@ -11,17 +10,17 @@ export const toInputValue = (value: any): string => {
   return '';
 };
 
-function conditionallyUpdateAttribute<T>(instance: T, attribute: keyof T, value: any): void {
+function conditionallyUpdateAttribute<T extends MDCInputComponent>(instance: T, attribute: keyof T, value: any): void {
   if (instance[attribute] !== value) {
     instance[attribute] = value;
   }
 }
 
-export const updateMDCInstance = (instance?: MDCTextField | MDCSelect, props?: MDCTextFieldProps | MDCSelectProps): void => {
+export function updateMDCInstance<T extends MDCInputComponent>(instance?: T, props?: MDCInputComponent): void {
   if (instance && props) {
     conditionallyUpdateAttribute(instance, 'value', toInputValue(props.value));
-    conditionallyUpdateAttribute(instance, 'required', !!props.required);
-    conditionallyUpdateAttribute(instance, 'disabled', !!props.disabled);
-    conditionallyUpdateAttribute(instance, 'valid', !!props.valid);
+    conditionallyUpdateAttribute(instance, 'required', props.required);
+    conditionallyUpdateAttribute(instance, 'disabled', props.disabled);
+    conditionallyUpdateAttribute(instance, 'valid', props.valid);
   }
-};
+}

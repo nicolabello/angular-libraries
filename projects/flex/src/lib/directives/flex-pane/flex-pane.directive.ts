@@ -5,14 +5,13 @@ import {distinctUntilChanged, map} from 'rxjs/operators';
 import {Size} from '../../types/size';
 import {FlexContainerService} from '../../services/flex-container.service';
 import {FlexPaneService} from '../../services/flex-pane.service';
-import {FlexContainer} from '../flex-container/flex-container';
+import {FlexContainerDirective} from '../flex-container/flex-container.directive';
 
 @Directive()
-// tslint:disable-next-line:directive-class-suffix
-export abstract class FlexPane implements OnDestroy {
+export abstract class FlexPaneDirective implements OnDestroy {
 
   public hostElement: HTMLElement;
-  protected flexContainer: FlexContainer;
+  protected flexContainer: FlexContainerDirective;
   protected subscriptions = new SubscriptionsBucket();
   private innerSizeSubject = new ReplaySubject<Size>(1);
 
@@ -72,7 +71,7 @@ export abstract class FlexPane implements OnDestroy {
     this.hostElement.style.right = `${value}px`;
   }
 
-  public get parentFlexPane(): FlexPane {
+  public get parentFlexPane(): FlexPaneDirective {
     return this.flexContainer.parentFlexPane;
   }
 

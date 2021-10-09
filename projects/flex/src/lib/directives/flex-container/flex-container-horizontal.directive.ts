@@ -1,13 +1,13 @@
 import {Directive, HostBinding} from '@angular/core';
 import {Size} from '../../types/size';
 import {FlexContainerService} from '../../services/flex-container.service';
-import {FlexContainer} from './flex-container';
+import {FlexContainerDirective} from './flex-container.directive';
 
 @Directive({
   selector: '[nblFlexContainerHorizontal]',
   providers: [FlexContainerService],
 })
-export class FlexContainerHorizontalDirective extends FlexContainer {
+export class FlexContainerHorizontalDirective extends FlexContainerDirective {
 
   @HostBinding('style.position') public position = 'relative';
 

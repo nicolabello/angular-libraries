@@ -6,13 +6,12 @@ import {Size} from '../../types/size';
 import {FlexContainerService} from '../../services/flex-container.service';
 import {FlexPaneService} from '../../services/flex-pane.service';
 import {FlexRootService} from '../../services/flex-root.service';
-import {FlexPane} from '../flex-pane/flex-pane';
+import {FlexPaneDirective} from '../flex-pane/flex-pane.directive';
 import {FlexPaneDynamicDirective} from '../flex-pane/flex-pane-dynamic.directive';
 import {FlexPaneFixedDirective} from '../flex-pane/flex-pane-fixed.directive';
 
 @Directive()
-// tslint:disable-next-line:directive-class-suffix
-export abstract class FlexContainer implements OnInit, OnDestroy {
+export abstract class FlexContainerDirective implements OnInit, OnDestroy {
 
   protected fixedPanesBefore: FlexPaneFixedDirective[] = [];
   protected dynamicPane?: FlexPaneDynamicDirective;
@@ -40,9 +39,9 @@ export abstract class FlexContainer implements OnInit, OnDestroy {
   }
 
   // @ts-ignore
-  private _parentFlexPane: FlexPane;
+  private _parentFlexPane: FlexPaneDirective;
 
-  public get parentFlexPane(): FlexPane {
+  public get parentFlexPane(): FlexPaneDirective {
     return this._parentFlexPane;
   }
 
@@ -119,7 +118,7 @@ export abstract class FlexContainer implements OnInit, OnDestroy {
     this.update();
   }
 
-  public unsetDynamicPane(flexPane: FlexPane): void {
+  public unsetDynamicPane(flexPane: FlexPaneDirective): void {
     if (this.dynamicPane === flexPane) {
       this.dynamicPane = undefined;
       this.update();

@@ -1,13 +1,13 @@
 import {Directive} from '@angular/core';
 import {Size} from '../../types/size';
 import {FlexContainerService} from '../../services/flex-container.service';
-import {FlexContainer} from './flex-container';
+import {FlexContainerDirective} from './flex-container.directive';
 
 @Directive({
   selector: '[nblFlexContainerVertical]',
   providers: [FlexContainerService],
 })
-export class FlexContainerVerticalDirective extends FlexContainer {
+export class FlexContainerVerticalDirective extends FlexContainerDirective {
 
   protected updateChildren(size: Size): void {
 

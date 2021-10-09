@@ -1,23 +1,17 @@
-import {AfterViewInit, Directive, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, EventEmitter, OnChanges, OnDestroy, Output} from '@angular/core';
 import {MDCSelect} from '@nicolabello/material-components-web';
-import {updateMDCInstance} from '../helpers/mdc';
+import {InputDirective} from '../helpers/input.directive';
 
 @Directive({
   selector: '.mdc-select',
   exportAs: 'mdcSelect'
 })
-export class SelectDirective implements AfterViewInit, OnChanges, OnDestroy {
-
-  public instance?: MDCSelect;
-
-  @Input() public required?: boolean;
-  @Input() public disabled?: boolean;
-  @Input() public valid?: boolean;
-  @Input() public value?: any;
+export class SelectDirective extends InputDirective<MDCSelect> implements AfterViewInit, OnChanges, OnDestroy {
 
   @Output() private valueChange = new EventEmitter<string>();
 
   constructor(private elementRef: ElementRef<HTMLElement>) {
+    super();
   }
 
   public ngAfterViewInit(): void {
@@ -27,21 +21,13 @@ export class SelectDirective implements AfterViewInit, OnChanges, OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    super.ngOnDestroy();
     this.instance?.unlisten('MDCSelect:change', this.emitInstanceValue);
     this.instance?.destroy();
   }
 
   public ngOnChanges(): void {
     this.updateMDCInstance();
-  }
-
-  private updateMDCInstance(): void {
-    updateMDCInstance(this.instance, {
-      required: this.required,
-      disabled: this.disabled,
-      valid: this.valid,
-      value: this.value,
-    });
   }
 
   private emitInstanceValue = () => {
