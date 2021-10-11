@@ -26,10 +26,6 @@ export class SelectDirective extends InputDirective<MDCSelect> implements AfterV
     this.instance?.destroy();
   }
 
-  public ngOnChanges(): void {
-    this.updateMDCInstance();
-  }
-
   private emitInstanceValue = () => {
     this.valueChange.emit(this.instance?.value);
   }

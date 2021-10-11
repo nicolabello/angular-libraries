@@ -18,10 +18,6 @@ export class TextFieldDirective extends InputDirective<MDCTextField> implements 
     this.updateMDCInstance();
   }
 
-  public ngOnChanges(): void {
-    this.updateMDCInstance();
-  }
-
   public ngOnDestroy(): void {
     super.ngOnDestroy();
     this.instance?.destroy();

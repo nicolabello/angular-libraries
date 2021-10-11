@@ -1,15 +1,17 @@
 import {AfterViewInit, Directive, ElementRef, OnDestroy} from '@angular/core';
 import {MDCSwitch} from '@nicolabello/material-components-web';
+import {ToggleDirective} from '../helpers/toggle.directive';
 
 @Directive({
   selector: '.mdc-switch',
   exportAs: 'mdcSwitch'
 })
-export class SwitchDirective implements AfterViewInit, OnDestroy {
+export class SwitchDirective extends ToggleDirective<MDCSwitch> implements AfterViewInit, OnDestroy {
 
   public instance?: MDCSwitch;
 
   constructor(private elementRef: ElementRef<HTMLButtonElement>) {
+    super();
   }
 
   public ngAfterViewInit(): void {
@@ -17,6 +19,7 @@ export class SwitchDirective implements AfterViewInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    super.ngOnDestroy();
     this.instance?.destroy();
   }
 

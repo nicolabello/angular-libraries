@@ -1,4 +1,4 @@
-import {MDCInputComponent} from '../types/mdc';
+import {MDCInputComponent} from '../types/mdc-input-component';
 
 export const toInputValue = (value: any): string => {
   if (typeof value === 'string') {
@@ -16,7 +16,7 @@ function conditionallyUpdateAttribute<T extends MDCInputComponent>(instance: T, 
   }
 }
 
-export function updateMDCInstance<T extends MDCInputComponent>(instance?: T, props?: MDCInputComponent): void {
+export function updateMDCInputInstance<T extends MDCInputComponent>(instance?: T, props?: MDCInputComponent): void {
   if (instance && props) {
     conditionallyUpdateAttribute(instance, 'value', toInputValue(props.value));
     conditionallyUpdateAttribute(instance, 'required', props.required);

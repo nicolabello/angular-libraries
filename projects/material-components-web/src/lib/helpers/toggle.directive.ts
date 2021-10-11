@@ -1,17 +1,17 @@
 import {Directive, Input, OnChanges, OnDestroy} from '@angular/core';
-import {updateMDCInputInstance} from './update-mdc-input-instance';
-import {MDCInputComponent} from '../types/mdc-input-component';
 import {AbstractControl, FormControl} from '@angular/forms';
 import {merge, Subscription} from 'rxjs';
 import {tap} from 'rxjs/operators';
+import {MDCToggleComponent} from '../types/mdc-toggle-component';
+import {updateMDCToggleInstance} from './update-mdc-toggle-instance';
 
 @Directive()
-export abstract class InputDirective<T extends MDCInputComponent> implements OnChanges, OnDestroy {
+export abstract class ToggleDirective<T extends MDCToggleComponent> implements OnChanges, OnDestroy {
 
-  @Input() public required?: boolean;
   @Input() public disabled?: boolean;
-  @Input() public invalid?: boolean;
-  @Input() public value?: any;
+  @Input() public selected?: any;
+  public instance?: T;
+  private formControlSubscription?: Subscription;
 
   @Input()
   public set mdcFormControl(formControl: AbstractControl | null) {
@@ -19,27 +19,19 @@ export abstract class InputDirective<T extends MDCInputComponent> implements OnC
       this.formControlSubscription?.unsubscribe();
       merge(formControl.valueChanges, formControl.statusChanges).pipe(
         tap(() => {
-          updateMDCInputInstance(this.instance, {
-            required: !!this.required,
+          updateMDCToggleInstance(this.instance, {
             disabled: formControl.disabled,
-            valid: !(formControl.invalid && (formControl.dirty || formControl.touched)),
-            value: formControl.value,
+            selected: formControl.value,
           });
         })
       ).subscribe();
     }
   }
 
-  public instance?: T;
-
-  private formControlSubscription?: Subscription;
-
   public updateMDCInstance(): void {
-    updateMDCInputInstance(this.instance, {
-      required: !!this.required,
+    updateMDCToggleInstance(this.instance, {
+      selected: this.selected,
       disabled: !!this.disabled,
-      valid: !this.invalid,
-      value: this.value,
     });
   }
 
