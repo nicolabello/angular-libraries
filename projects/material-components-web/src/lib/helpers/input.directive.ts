@@ -13,34 +13,44 @@ export abstract class InputDirective<T extends MDCInputComponent> implements OnC
   @Input() public invalid?: boolean;
   @Input() public value?: any;
 
-  @Input()
-  public set mdcFormControl(formControl: AbstractControl | null) {
-    if (formControl && formControl instanceof FormControl) {
-      this.formControlSubscription?.unsubscribe();
-      merge(formControl.valueChanges, formControl.statusChanges).pipe(
-        tap(() => {
-          updateMDCInputInstance(this.instance, {
-            required: !!this.required,
-            disabled: formControl.disabled,
-            valid: !(formControl.invalid && (formControl.dirty || formControl.touched)),
-            value: formControl.value,
-          });
-        })
-      ).subscribe();
-    }
-  }
+  private formControl: FormControl | null = null;
 
   public instance?: T;
 
+  @Input()
+  public set mdcFormControl(formControl: AbstractControl | null) {
+    if (formControl && formControl instanceof FormControl) {
+      if (this.formControl !== formControl) {
+        this.formControl = formControl;
+        this.formControlSubscription?.unsubscribe();
+        this.formControlSubscription = merge(formControl.valueChanges, formControl.statusChanges).pipe(
+          tap(() => this.updateMDCInstance())
+        ).subscribe();
+      }
+    } else {
+      this.formControlSubscription?.unsubscribe();
+      this.formControl = null;
+    }
+    this.updateMDCInstance();
+  }
   private formControlSubscription?: Subscription;
 
   public updateMDCInstance(): void {
-    updateMDCInputInstance(this.instance, {
-      required: !!this.required,
-      disabled: !!this.disabled,
-      valid: !this.invalid,
-      value: this.value,
-    });
+    if (this.formControl) {
+      updateMDCInputInstance(this.instance, {
+        required: !!this.required,
+        disabled: this.formControl.disabled,
+        valid: !(this.formControl.invalid && (this.formControl.dirty || this.formControl.touched)),
+        value: this.formControl.value,
+      });
+    } else {
+      updateMDCInputInstance(this.instance, {
+        required: !!this.required,
+        disabled: !!this.disabled,
+        valid: !this.invalid,
+        value: this.value,
+      });
+    }
   }
 
   public ngOnChanges(): void {

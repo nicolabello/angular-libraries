@@ -10,29 +10,42 @@ export abstract class ToggleDirective<T extends MDCToggleComponent> implements O
 
   @Input() public disabled?: boolean;
   @Input() public selected?: any;
+
+  private formControl: FormControl | null = null;
+
   public instance?: T;
-  private formControlSubscription?: Subscription;
 
   @Input()
   public set mdcFormControl(formControl: AbstractControl | null) {
     if (formControl && formControl instanceof FormControl) {
+      if (this.formControl !== formControl) {
+        this.formControl = formControl;
+        this.formControlSubscription?.unsubscribe();
+        this.formControlSubscription = merge(formControl.valueChanges, formControl.statusChanges).pipe(
+          tap(() => this.updateMDCInstance())
+        ).subscribe();
+      }
+    } else {
       this.formControlSubscription?.unsubscribe();
-      merge(formControl.valueChanges, formControl.statusChanges).pipe(
-        tap(() => {
-          updateMDCToggleInstance(this.instance, {
-            disabled: formControl.disabled,
-            selected: formControl.value,
-          });
-        })
-      ).subscribe();
+      this.formControl = null;
     }
+    this.updateMDCInstance();
   }
 
+  private formControlSubscription?: Subscription;
+
   public updateMDCInstance(): void {
-    updateMDCToggleInstance(this.instance, {
-      selected: this.selected,
-      disabled: !!this.disabled,
-    });
+    if (this.formControl) {
+      updateMDCToggleInstance(this.instance, {
+        disabled: this.formControl.disabled,
+        selected: this.formControl.value,
+      });
+    } else {
+      updateMDCToggleInstance(this.instance, {
+        selected: this.selected,
+        disabled: !!this.disabled,
+      });
+    }
   }
 
   public ngOnChanges(): void {
