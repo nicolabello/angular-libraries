@@ -3,7 +3,7 @@ import {updateMDCInputInstance} from './update-mdc-input-instance';
 import {MDCInputComponent} from '../types/mdc-input-component';
 import {AbstractControl, FormControl} from '@angular/forms';
 import {merge, Subscription} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {distinctUntilChanged, tap} from 'rxjs/operators';
 
 @Directive()
 export abstract class InputDirective<T extends MDCInputComponent> implements OnChanges, OnDestroy {
@@ -23,7 +23,10 @@ export abstract class InputDirective<T extends MDCInputComponent> implements OnC
       if (this.formControl !== formControl) {
         this.formControl = formControl;
         this.formControlSubscription?.unsubscribe();
-        this.formControlSubscription = merge(formControl.valueChanges, formControl.statusChanges).pipe(
+        this.formControlSubscription = merge(
+          formControl.valueChanges.pipe(distinctUntilChanged()),
+          formControl.statusChanges.pipe(distinctUntilChanged())
+        ).pipe(
           tap(() => this.updateMDCInstance())
         ).subscribe();
       }
@@ -33,6 +36,7 @@ export abstract class InputDirective<T extends MDCInputComponent> implements OnC
     }
     this.updateMDCInstance();
   }
+
   private formControlSubscription?: Subscription;
 
   public updateMDCInstance(): void {

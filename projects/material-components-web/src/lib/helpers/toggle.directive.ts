@@ -1,7 +1,7 @@
 import {Directive, Input, OnChanges, OnDestroy} from '@angular/core';
 import {AbstractControl, FormControl} from '@angular/forms';
 import {merge, Subscription} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {distinctUntilChanged, tap} from 'rxjs/operators';
 import {MDCToggleComponent} from '../types/mdc-toggle-component';
 import {updateMDCToggleInstance} from './update-mdc-toggle-instance';
 
@@ -21,7 +21,10 @@ export abstract class ToggleDirective<T extends MDCToggleComponent> implements O
       if (this.formControl !== formControl) {
         this.formControl = formControl;
         this.formControlSubscription?.unsubscribe();
-        this.formControlSubscription = merge(formControl.valueChanges, formControl.statusChanges).pipe(
+        this.formControlSubscription = merge(
+          formControl.valueChanges.pipe(distinctUntilChanged()),
+          formControl.statusChanges.pipe(distinctUntilChanged())
+        ).pipe(
           tap(() => this.updateMDCInstance())
         ).subscribe();
       }

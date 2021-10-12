@@ -1,4 +1,4 @@
-import {AfterViewInit, Directive, ElementRef, OnDestroy} from '@angular/core';
+import {AfterViewInit, Directive, ElementRef, HostListener, OnDestroy} from '@angular/core';
 import {MDCSwitch} from '@nicolabello/material-components-web';
 import {ToggleDirective} from '../helpers/toggle.directive';
 
@@ -10,12 +10,18 @@ export class SwitchDirective extends ToggleDirective<MDCSwitch> implements After
 
   public instance?: MDCSwitch;
 
+  public ngAfterViewInit(): void {
+    this.instance = new MDCSwitch(this.elementRef.nativeElement);
+    this.updateMDCInstance();
+  }
+
   constructor(private elementRef: ElementRef<HTMLButtonElement>) {
     super();
   }
 
-  public ngAfterViewInit(): void {
-    this.instance = new MDCSwitch(this.elementRef.nativeElement);
+  @HostListener('click', ['$event'])
+  private onHostClick(event: MouseEvent): void {
+    event.stopImmediatePropagation();
   }
 
   public ngOnDestroy(): void {
