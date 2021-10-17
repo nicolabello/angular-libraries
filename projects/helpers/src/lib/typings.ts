@@ -12,15 +12,15 @@ export class Typings {
     return typeof value === 'number' && isFinite(value);
   }
 
-  public static isArray(value: any): value is [] {
+  public static isArray(value: any): value is any[] {
     return Array.isArray(value);
   }
 
-  public static isFunction(value: any): value is () => {} {
+  public static isFunction(value: any): value is () => any {
     return typeof value === 'function';
   }
 
-  public static isObject(value: any): value is object {
+  public static isObject(value: any): value is { [key: string]: any } {
     return value && typeof value === 'object' && value.constructor === Object;
   }
 

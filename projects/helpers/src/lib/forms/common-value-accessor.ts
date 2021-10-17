@@ -27,6 +27,7 @@ export class CommonValueAccessor<T> implements ControlValueAccessor, Validator {
   protected onChange: (value: T) => void = emptyFunction;
   protected onTouch: () => void = emptyFunction;
   protected onValidatorChange: () => void = emptyFunction;
+
   @Input() public formControlName?: string;
 
   constructor(
@@ -102,8 +103,6 @@ export class CommonValueAccessor<T> implements ControlValueAccessor, Validator {
     return this.formControl?.invalid || false;
   }
 
-  // ControlValueAccessor implementation - START
-
   public get errors(): ValidationErrors | null {
     return this.formControl?.errors || null;
   }
@@ -124,10 +123,6 @@ export class CommonValueAccessor<T> implements ControlValueAccessor, Validator {
     this.onTouch = onTouched;
   }
 
-  // ControlValueAccessor implementation - END
-
-  // Validators implementation - START
-
   // Input for disabled
   public setDisabledState(disabled: boolean): void {
     this._disabled = disabled;
@@ -145,8 +140,6 @@ export class CommonValueAccessor<T> implements ControlValueAccessor, Validator {
     return Object.keys(errors).length ? errors : null;
 
   }
-
-  // Validators implementation - END
 
   public registerOnValidatorChange(onValidatorChange: () => void): void {
     this.onValidatorChange = onValidatorChange;
